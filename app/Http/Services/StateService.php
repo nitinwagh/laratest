@@ -20,9 +20,9 @@ class StateService {
     }
     
     /**
-     * Lisr of all cities
+     * List of all cities
      *
-     * @return collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getAllCity()
     {
@@ -42,16 +42,28 @@ class StateService {
         $city->state_id = $data['state'];
         return $city->save();
     }
-    
-    public function updateCity($id, $data)
+
+    /**
+     * Update city
+     *
+     * @param type $data
+     * @return boolean
+     */
+    public function updateCity($data)
     {
-        $city = City::find($id);
-        $city->name = $data['city'];
-        $city->state_id = $data['state'];
-        $city->active = $data['active'];
+        $city = City::find($data['rId']);
+        $city->name = $data['ecity'];
+        $city->state_id = $data['estate'];
+        $city->active = isset($data['active']) ? 1 : 0;
         return $city->save();
     }
-    
+
+    /**
+     * Delete city
+     *
+     * @param type $id
+     * @return boolean
+     */
     public function deleteCity($id)
     {
         $city = City::find($id);        

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Web\StateController@index');
+Route::get('/', 'Web\StateController@index')->name('home');
 Route::post('add-city', 'Web\StateController@addCity')->name('add.city');
-Route::get('edit-city/{id}', 'Web\StateController@addCity')->name('edit.city');
+Route::post('edit-city', 'Web\StateController@editCity')->name('edit.city');
 Route::get('delete-city/{id}', 'Web\StateController@deleteCity')->name('delete.city');
